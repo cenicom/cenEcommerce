@@ -25,9 +25,13 @@
     <div class="card-body">
       <p class="login-box-msg">Inicie la Sesión</p>
 
-      <form id="form-login">
+      <form action="/login" method="POST">
             <div class="input-group mb-3">
-                <input id="user" type="text" class="form-control" placeholder="User Name..." required>
+                @csrf
+                <div class="input-group mb-1">
+                    <label for="exampleInputEmail">Email Address:</label>
+                </div>
+                <input name="email" type="email" class="form-control" placeholder="Email..." required>
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-user"></span>
@@ -35,7 +39,11 @@
                 </div>
             </div>
             <div class="input-group mb-3">
-                <input id="pass" type="password" class="form-control" placeholder="Password" required>
+                <div class="input-group mb-1">
+                    <label for="exampleInputPassword">Password:</label>
+                </div>
+
+                <input name="password" type="password" class="form-control" placeholder="Password" required>
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-lock"></span>
@@ -43,9 +51,9 @@
                 </div>
             </div>
             <div class="social-auth-links text-center mt-2 mb-3">
-                <botton type="submit" class="btn btn-block btn-primary">
+                <button type="submit" class="btn btn-block btn-primary">
                     Iniciar Sesión
-                </botton>
+                </button>
             </div>
       </form>
 
