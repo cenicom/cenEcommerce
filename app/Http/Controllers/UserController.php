@@ -13,9 +13,12 @@ class UserController extends Controller
         $user = User::where([
             'email'=>$request->email])
             ->first();
-        if($user || Hash::check($request->password, $user->password)){
+
+        if(!$user || !Hash::check($request->password, $user->password)){
             return "Usuario y/o Password no Están Registrados";
         }else{
+            $request->session()->put('user',$user);
+
             return redirect('/');
         }
     }
